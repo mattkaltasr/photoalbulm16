@@ -1,0 +1,15 @@
+ matthew kalita 
+ Yigit Gungor
+ 
+ 
+  photo album work split 
+  
+  log-in/invalid log in        Yigit Gungor
+  admin panel                  matthew kalitasr
+  albums page                  Yigit Gungor
+  editing alb page             matthew kalitasr
+  album photo page             Yigit Gungor
+  photo display                Matthew kalitasr 
+  adding albums photos         Yigit Gungor
+  search                       Matthew kalita sr 
+  tags                         Yigit Gungor
