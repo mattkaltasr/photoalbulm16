@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<GridPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AlbumsPageController">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#AddAlbum_Clicked" text="Add" />
+                  <MenuItem mnemonicParsing="false" onAction="#EditAlbum_Clicked" text="Edit" />
+               </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="10.0" layoutY="10.0" GridPane.rowIndex="1">
+	<content>
+      <TilePane fx:id="TilePane" hgap="10.0" layoutX="10.0" layoutY="10.0" vgap="10.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a1503d" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c21fff" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9dff1f" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f3b" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21ffb0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#811fff" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffff1f" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff1f81" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffa61f" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+               </children>
+      </TilePane>      
+         </content>
+</ScrollPane>            
+
+
+         </children>
+      </GridPane>

@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<AnchorPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.LoginPageController">
    <children>
       <GridPane maxHeight="300.0" maxWidth="300.0" minHeight="300.0" minWidth="300.0" prefHeight="300.0" prefWidth="300.0">
         <columnConstraints>
@@ -26,7 +25,12 @@
          <children>
             <TextField fx:id="user_tb" promptText="Username" GridPane.rowIndex="1" />
             <PasswordField fx:id="pass_tb" promptText="Password" GridPane.rowIndex="2" />
-            <Button fx:id="login_btn" mnemonicParsing="false" text="Login" GridPane.rowIndex="3" />
+            <Button fx:id="login_btn" mnemonicParsing="false" onAction="#Login_Clicked" text="Login" GridPane.rowIndex="3" />
+            <Button fx:id="albumtest_btn" mnemonicParsing="false" onAction="#Test_Clicked" text="Album Test" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="150.0" />
+               </GridPane.margin>
+            </Button>
             <Label text="Photo Album" textAlignment="CENTER" GridPane.halignment="CENTER" />
          </children>
          <padding>
