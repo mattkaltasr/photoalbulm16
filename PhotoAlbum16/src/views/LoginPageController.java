@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.PasswordField;
@@ -25,6 +24,16 @@ public class LoginPageController {
 	@FXML
 	private Button albumtest_btn;
 
+	
+	public void start(Stage mainStage) throws Exception {      
+	     // obsList = FXCollections.observableList(readDataFrom(System.getProperty("user.dir") + "/data/songdata.csv"));
+	      
+	     // listView.setItems(obsList);
+		//  listView.getSelectionModel().select(0);
+	      
+	   }
+
+	
 	// Event Listener on Button[#login_btn].onAction
 	@FXML
 	public void Login_Clicked(ActionEvent event) {

@@ -1,8 +1,13 @@
 package views;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
@@ -10,11 +15,19 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class AlbumsPageController {
 	@FXML
 	private TilePane TilePane;
 	
+	public void start(Stage mainStage) throws Exception {      
+	     // obsList = FXCollections.observableList(readDataFrom(System.getProperty("user.dir") + "/data/songdata.csv"));
+	      
+	     // listView.setItems(obsList);
+		//  listView.getSelectionModel().select(0);
+	      
+	   }
 
 	// Event Listener on MenuItem.onAction
 	@FXML
@@ -28,7 +41,7 @@ public class AlbumsPageController {
 	}
 	
 	@FXML
-	public void Rectangle_Clicked(MouseEvent event) {
+	public void Rectangle_Clicked(MouseEvent event) throws IOException {
 		
 		Rectangle btn = (Rectangle) event.getSource();		
 		Color c = (Color) btn.getFill();
@@ -42,6 +55,16 @@ public class AlbumsPageController {
 		alert.setHeaderText("Look, an Information Dialog");
 		alert.setContentText("Color: " + hex);
 		alert.showAndWait();
+		
+		 Stage stage; 
+	     Parent root;     
+	     
+	     stage=(Stage) btn.getScene().getWindow();
+	     root = FXMLLoader.load(getClass().getResource("AlbumPhotosPage.fxml"));
+
+	     Scene scene = new Scene(root);
+	     stage.setScene(scene);
+	     stage.show();		
 	}
 	
 }

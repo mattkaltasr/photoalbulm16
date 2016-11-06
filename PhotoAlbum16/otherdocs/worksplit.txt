@@ -4,11 +4,11 @@
  
   photo album work split 
   
-  log-in/invalid log in        Yigit Gungor
+  log-in/invalid log in        Yigit Gungor                  -  UI DONE
   admin panel                  matthew kalitasr
-  albums page                  Yigit Gungor
+  albums page                  Yigit Gungor                  -  UI DONE
   editing alb page             matthew kalitasr
-  album photo page             Yigit Gungor
+  album photo page             Yigit Gungor                  -  UI DONE
   photo display                Matthew kalitasr 
   adding albums photos         Yigit Gungor
   search                       Matthew kalita sr 
