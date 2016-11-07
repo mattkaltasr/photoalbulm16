@@ -1,5 +1,12 @@
 package application;
 	
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -8,10 +15,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
-
 public class Main extends Application {
+	public static ArrayList<User> UserList;
+	public static User currentUser;
+
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/views/LoginPage.fxml"));
@@ -26,7 +35,45 @@ public class Main extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		UserList = new ArrayList<User>();
+		readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
 		launch(args);
+	}
+	
+	
+	public static void readDataFrom(String uri) throws Exception{
+		
+		BufferedReader br;
+		try{
+		br = new BufferedReader(new FileReader(uri));
+		}
+		catch(FileNotFoundException err){
+			File file = new File(uri);
+			  if(!file.exists()){
+			     file.getParentFile().mkdirs();
+			     file.createNewFile();
+			  }
+			
+			br = new BufferedReader(new FileReader(uri));		
+		}
+
+	    String line = null;	    
+	    while ((line = br.readLine()) != null) {
+
+	    	if(line != ""){
+
+	      String[] values = line.split(",");
+
+	      if(values[2] == "admin")
+	    	  UserList.add(new User(values[0],values[1],Role.admin));
+	      else
+	    	  UserList.add(new User(values[0],values[1],Role.normal));
+
+	    	}
+	   	}
+	    br.close();
+	    
+		
 	}
 }

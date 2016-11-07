@@ -8,9 +8,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.TilePane?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
 
 <GridPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AlbumPhotosPageController">
         <columnConstraints>
@@ -23,6 +20,8 @@
          <children>
       <ButtonBar maxHeight="40.0" minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
         <buttons>
+            <Button fx:id="edit_photos_btn" mnemonicParsing="false" onAction="#EditPhotos_Clicked" text="Edit" />
+            <Button fx:id="add_photos_btn" mnemonicParsing="false" onAction="#AddPhotos_Clicked" text="Add" />
           <Button fx:id="Back_Button" mnemonicParsing="false" onAction="#BackButton_Clicked" text="&lt;--" />
         </buttons>
          <opaqueInsets>
@@ -39,127 +38,6 @@
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill></Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" onMouseClicked="#Rectangle_Clicked" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </Rectangle>
-               </children>
       </TilePane>      
          </content>
 </ScrollPane>            

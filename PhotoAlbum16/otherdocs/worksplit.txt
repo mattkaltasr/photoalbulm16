@@ -4,12 +4,12 @@
  
   photo album work split 
   
-  log-in/invalid log in        Yigit Gungor                  -  UI DONE
+  log-in/invalid log in        Yigit Gungor                  -  Authentication works, errors are not working yet.
   admin panel                  matthew kalitasr
-  albums page                  Yigit Gungor                  -  UI DONE
+  albums page                  Yigit Gungor                  -  Done IDEA: rectangles can have a background.
   editing alb page             matthew kalitasr
-  album photo page             Yigit Gungor                  -  UI DONE
+  album photo page             Yigit Gungor                  -  UI DONE - Waiting for photo display to add click on image
   photo display                Matthew kalitasr 
-  adding albums photos         Yigit Gungor
+  adding albums photos         Yigit Gungor					 -  DONE 
   search                       Matthew kalita sr 
-  tags                         Yigit Gungor
+  tags                         Yigit Gungor					 -  Waiting for photo display
