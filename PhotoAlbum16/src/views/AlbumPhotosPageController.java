@@ -62,7 +62,7 @@ public class AlbumPhotosPageController {
 		for(int i = 0; i<photos.size(); i++){
 
 			ImageView imv = new ImageView();
-			Photo p = new Photo("file:///" + photos.get(i));
+			Photo p = new Photo(photos.get(i));
 			imv.setImage(p.getImage());
 			
 			Text label = new Text(p.getName());
