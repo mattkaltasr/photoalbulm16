@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
@@ -28,7 +29,7 @@ import org.w3c.dom.NodeList;
 
 import javafx.scene.image.Image;
 
-public class Photo {
+public class Photo implements Serializable{
 
 	Image image;
 	String name;
