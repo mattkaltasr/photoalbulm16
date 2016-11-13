@@ -52,9 +52,7 @@ public class Photo implements Serializable{
 	{
 		
 	}
-	
-	
-	
+		
 	public Image getImage(){
 		return image;
 	}

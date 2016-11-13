@@ -44,20 +44,32 @@ public class AlbumPhotosPageController {
 	private Button Back_Button;
 	@FXML
 	private TilePane PhotosTilePane;
+	@FXML
+	private ImageView big_imageview;
+	@FXML
+	private Button back_button;
+	@FXML
+	private Button forw_button;
 
 	//AlbumsPageController.currentAlbum
-	
+
+	private int slide_index;
+
+	private List<String> photos = new ArrayList<String>();
 	@FXML
 	public void initialize() throws IOException{
 		File file = new File(Main.currentUser.getUserDirectory()+File.separator+AlbumsPageController.currentAlbum);
 		File[] files = file.listFiles();
 
-		List<String> photos = new ArrayList<String>();
 		for(int i = 0; i< files.length; i++){
 			photos.add(files[i].getAbsolutePath());
+		}		
+
+		if(!photos.isEmpty()){
+			slide_index = 0;
+			big_imageview.setImage(new Photo(photos.get(0)).getImage());
 		}
-		
-		
+						
 		System.out.println("Photos found: " + photos.toString());
 		for(int i = 0; i<photos.size(); i++){
 
@@ -91,6 +103,25 @@ public class AlbumPhotosPageController {
 		}
 	}
 			
+	
+	@FXML
+	public void ForwImgButton_Clicked(ActionEvent event) throws IOException {
+			
+		
+		if(photos.size() > slide_index+1){
+				slide_index++;
+		}
+		else if(!photos.get(0).isEmpty()){
+				slide_index = 0;
+		}
+		big_imageview.setImage(new Photo(photos.get(slide_index)).getImage());
+	}
+	
+	@FXML
+	public void BackImgButton_Clicked(ActionEvent event) throws IOException {
+		
+	}
+	
 	// Event Listener on Button[#Back_Button].onAction
 	@FXML
 	public void BackButton_Clicked(ActionEvent event) throws IOException {
@@ -105,6 +136,7 @@ public class AlbumPhotosPageController {
 	     stage.setScene(scene);
 	     stage.show();		
 	}
+	
 	
 	
 	
