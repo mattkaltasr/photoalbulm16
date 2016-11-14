@@ -10,7 +10,9 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
@@ -24,6 +26,7 @@ import javax.imageio.plugins.jpeg.JPEGImageWriteParam;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+
 import javafx.scene.image.Image;
 
 public class Photo implements Serializable{
@@ -36,13 +39,20 @@ public class Photo implements Serializable{
 	
 	public Photo(String uri) throws IOException
 	{
-		image = new Image(uri,300,200,true,false);
+		image = new Image("file:///" + uri,300,200,true,false);
 		File f = new File(uri);
 		this.name = f.getName();
+		
+
+		System.out.println(f.isFile());
+		System.out.println(f.getAbsolutePath());		
 	}
 	
-	
-	
+	public void getMetadata()
+	{
+		
+	}
+		
 	public Image getImage(){
 		return image;
 	}
