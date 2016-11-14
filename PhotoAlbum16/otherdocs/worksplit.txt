@@ -6,8 +6,8 @@
   
   log-in/invalid log in        Yigit Gungor                  -  Authentication works, errors are not working yet.
   admin panel                  matthew kalitasr
-  albums page                  Yigit Gungor                  -  Done IDEA: rectangles can have a background.
-  editing alb page             matthew kalitasr
+  albums page                  Yigit Gungor                  -  Done
+  editing alb page             matthew kalitasr				 -  Done YG
   album photo page             Yigit Gungor                  -  UI DONE - Waiting for photo display to add click on image
   photo display                Matthew kalitasr 
   adding albums photos         Yigit Gungor					 -  DONE 

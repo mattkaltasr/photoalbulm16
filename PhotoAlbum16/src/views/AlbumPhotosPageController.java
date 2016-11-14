@@ -58,6 +58,7 @@ public class AlbumPhotosPageController {
 	private List<String> photos = new ArrayList<String>();
 	@FXML
 	public void initialize() throws IOException{
+		photos = new ArrayList<String>();
 		File file = new File(Main.currentUser.getUserDirectory()+File.separator+AlbumsPageController.currentAlbum);
 		File[] files = file.listFiles();
 
@@ -120,6 +121,14 @@ public class AlbumPhotosPageController {
 	@FXML
 	public void BackImgButton_Clicked(ActionEvent event) throws IOException {
 		
+
+		if(slide_index-1 < 0){
+				slide_index = photos.size() - 1;
+		}
+		else if(!photos.get(slide_index-1).isEmpty()){
+				slide_index--;
+		}
+		big_imageview.setImage(new Photo(photos.get(slide_index)).getImage());
 	}
 	
 	// Event Listener on Button[#Back_Button].onAction
