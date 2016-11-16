@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="373.0" prefWidth="285.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<AnchorPane prefHeight="373.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdministrationController">
    <children>
       <AnchorPane layoutX="-8.0" layoutY="-68.0" prefHeight="329.0" prefWidth="286.0">
          <children>
@@ -15,10 +14,10 @@
             <ImageView fitHeight="72.0" fitWidth="148.0" layoutX="85.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
             <TextField alignment="CENTER" layoutX="78.0" layoutY="234.0" promptText="USER NAME" />
             <TextField alignment="CENTER" layoutX="78.0" layoutY="269.0" promptText="PASSWORD" />
-         </children>
+   		 </children>
       </AnchorPane>
-      <Button layoutX="46.0" layoutY="270.0" mnemonicParsing="false" text="ADD" />
-      <Button layoutX="102.0" layoutY="270.0" mnemonicParsing="false" text="DELETE" />
-      <Button layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="LOG-OUT" />
+      <Button layoutX="46.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
+      <Button layoutX="102.0" layoutY="270.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>
