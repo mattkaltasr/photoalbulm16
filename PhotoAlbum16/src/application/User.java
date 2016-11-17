@@ -15,8 +15,7 @@ public class User {
 	}
 	
 	public String toString(){
-		return "User: " + username + " Pass: " + password; 
-		
+		return "Username: " + username + "\n" + "Password: " + password;
 	}
 	
 	public Role getRole(){

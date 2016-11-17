@@ -10,8 +10,8 @@
       <ListView fx:id="usersListView" prefHeight="250.0" prefWidth="300.0" />
       <TextField alignment="CENTER" layoutX="57.0" layoutY="317.0" promptText="USER NAME" AnchorPane.bottomAnchor="125.0" AnchorPane.topAnchor="317.0" />
       <TextField alignment="CENTER" layoutX="57.0" layoutY="357.0" promptText="PASSWORD" />
-      <Button layoutX="46.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="102.0" layoutY="270.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="Log out" />
+      <Button fx:id="addButton" onAction="#addButton_Clicked" layoutX="46.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
+      <Button fx:id="deleteButton" onAction="#deleteButton_Clicked" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" text="Delete" />
+      <Button fx:id="logOutButton" onAction="#logoutButton_Clicked" layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

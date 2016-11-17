@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,10 +52,11 @@ public class LoginPageController {
 		     
 		     stage=(Stage) login_btn.getScene().getWindow();
 		     root = FXMLLoader.load(getClass().getResource("Administration.fxml"));
+		     
 		     Scene scene = new Scene(root);
 		     stage.setScene(scene);
 		     stage.show();
-			
+		     return;
 		}
 		else{
 			for(User u : Main.UserList)
