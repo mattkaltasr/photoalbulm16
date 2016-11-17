@@ -14,6 +14,11 @@ public class User {
 		this.role = role;
 	}
 	
+	public String toString(){
+		return "User: " + username + " Pass: " + password; 
+		
+	}
+	
 	public Role getRole(){
 		return this.role;
 	}
