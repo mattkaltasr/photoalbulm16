@@ -1,8 +1,11 @@
 package application;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
 
 	private String username;
 	private String password;
@@ -38,5 +41,22 @@ public class User {
 		}
 		
 		return false;		
+	}
+	
+	
+	
+	
+	//serilize data 
+	public void writeApp(){
+		try {
+	        FileOutputStream fileOut = new FileOutputStream("user.dir" + username + ".src");
+	        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	        out.writeObject(this);
+	        out.close();
+	        fileOut.close();
+	    } catch(Exception e) {
+	    	System.out.println("not valid  serialization.");
+	    }
+		
 	}
 }
