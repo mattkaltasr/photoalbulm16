@@ -19,10 +19,12 @@
         </rowConstraints>
          <children>
       <ButtonBar maxHeight="40.0" minHeight="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
-         <buttons>
+         <buttons>         
+            <Button mnemonicParsing="false" fx:id="logoutButton" onAction="#logoutButton_Clicked" text="Log out" />
             <Button mnemonicParsing="false" onAction="#DeleteAlbum_Clicked" text="Delete" />
             <Button mnemonicParsing="false" onAction="#EditAlbum_Clicked" text="Edit" />
-            <Button mnemonicParsing="false" onAction="#AddAlbum_Clicked" text="Add" />
+            <Button mnemonicParsing="false" onAction="#AddAlbum_Clicked" text="Add" />          
+            
          </buttons>
          <opaqueInsets>
             <Insets />

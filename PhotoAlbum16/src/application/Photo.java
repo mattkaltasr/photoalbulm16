@@ -41,6 +41,9 @@ public class Photo implements Serializable{
 	{
 		image = new Image("file:///" + uri,300,200,true,false);
 		File f = new File(uri);
+		
+		//GET CAPTION WHEN FIRST IMPORTING THE IMAGE
+		// WHEN SERIALIZING USE THAT INSTEAD OF THE FILE NAME
 		this.name = f.getName();
 		
 

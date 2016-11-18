@@ -20,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
@@ -41,6 +42,8 @@ public class AlbumsPageController {
 	
 	@FXML
 	private TilePane TilePane;
+	@FXML
+	private Button logoutButton;
 	
 	public String[] albums;
 	
@@ -97,6 +100,21 @@ public class AlbumsPageController {
 	public void start(Stage mainStage) throws Exception {  
 	      
 	   }
+	
+	@FXML
+	public void logoutButton_Clicked(ActionEvent event) throws IOException {
+		
+		 Stage stage;
+	     Parent root;     
+	     
+	     stage=(Stage) logoutButton.getScene().getWindow();
+	     root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+
+	     Scene scene = new Scene(root);
+	     stage.setScene(scene);
+	     stage.show();
+		
+	}
 
 	@FXML
 	public void AddAlbum_Clicked(ActionEvent event) {
