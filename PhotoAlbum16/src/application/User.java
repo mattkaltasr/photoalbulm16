@@ -49,7 +49,7 @@ public class User implements Serializable{
 	//serilize data 
 	public void writeApp(){
 		try {
-	        FileOutputStream fileOut = new FileOutputStream("user.dir" + username + ".src");
+	        FileOutputStream fileOut = new FileOutputStream("data/" + username + ".cvs");
 	        ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	        out.writeObject(this);
 	        out.close();

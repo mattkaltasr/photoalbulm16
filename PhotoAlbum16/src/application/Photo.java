@@ -10,6 +10,9 @@ import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
@@ -33,12 +36,15 @@ public class Photo implements Serializable{
 
 	Image image;
 	String name;
-	String date;
+	LocalDateTime date;
 	String uri;
+	private HashMap<String, ArrayList<String>> phototags;
 	String[] tags;
 	
 	public Photo(String uri) throws IOException
 	{
+		
+		phototags=new HashMap<String,ArrayList<String>>();
 		image = new Image("file:///" + uri,300,200,true,false);
 		File f = new File(uri);
 		
@@ -50,6 +56,16 @@ public class Photo implements Serializable{
 		System.out.println(f.isFile());
 		System.out.println(f.getAbsolutePath());		
 	}
+	public Photo(File fileName,LocalDateTime dtemp){
+		this.name=fileName.getName();
+		date =dtemp;
+	}
+	
+	
+	public LocalDateTime getTime(){
+		return date;
+	}
+	
 	
 	public void getMetadata()
 	{
@@ -59,7 +75,17 @@ public class Photo implements Serializable{
 	public Image getImage(){
 		return image;
 	}
+	public  HashMap<String, ArrayList<String>> getPhotoTags(){
+		return phototags;
+	}
+	
+	
 	public String getName(){
 		return name;
 	}
+	
+	
+	
+	
+	
 }

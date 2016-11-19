@@ -1,7 +1,9 @@
 package application;
 	
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -16,8 +18,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 public class Main extends Application {
+	public static Administration admin = new Administration("admin","password");
 	public static ArrayList<User> UserList;
 	public static User currentUser;
+	public static ArrayList<Photo> searchReturn;
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -28,7 +33,8 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Photo Album");
-			primaryStage.show();			
+			primaryStage.show();
+			searchReturn= new ArrayList<Photo>();
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -76,4 +82,45 @@ public class Main extends Application {
 	    
 		
 	}
+	
+	
+	// gets files from file 
+	
+	public User getUserFile(String fileName){
+		User temp=null;
+		try{
+			FileInputStream input = new FileInputStream("data/"+fileName);
+			ObjectInputStream inTemp=new ObjectInputStream(input);
+			temp=(User)inTemp.readObject();
+			inTemp.close();
+			input.close();
+		}catch(Exception e ){
+			System.out.println(" not a valid deserialization!");
+		}
+		return temp;
+	}
+	
+	
+	
+	//gets list for running 
+	//of program 
+	
+	public void getUserList(){
+		
+		File dir = new File ("data");
+		File[]  directoryListing= dir.listFiles();
+		
+		if (directoryListing!=null){
+			for (File temp : directoryListing){
+				String name=temp.getName();
+				if(name.toLowerCase().contains(".csv")){
+					User tempUser=getUserFile(name);
+					admin.getList().add(tempUser);
+					
+				}
+			}
+		}
+		
+	}
+	
 }
