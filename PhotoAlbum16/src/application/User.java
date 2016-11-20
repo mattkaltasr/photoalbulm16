@@ -4,9 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import application.Role;
 
 public class User implements Serializable{
-
+ private final Role user=Role.normal;
 	private String username;
 	private String password;
 	private Role role;
@@ -16,7 +17,14 @@ public class User implements Serializable{
 		this.password = password;
 		this.role = role;
 	}
-	
+	public User(String username,String Password){
+		this.username = username;
+		this.password = Password;
+		this.role = user;
+		
+		
+		
+	}
 	public String toString(){
 		return "Username: " + username + "\n" + "Password: " + password;
 	}
@@ -27,6 +35,14 @@ public class User implements Serializable{
 	public String getUserName(){
 		return this.username;
 	}
+	
+	
+	public String getPassword(){
+		return password;
+	}
+	
+	
+	
 	public String getUserDirectory(){
 		System.out.println("user dir =  " + System.getProperty("user.dir") + File.separator +"src" + File.separator + "data" + File.separator+ this.username);
 		return System.getProperty("user.dir") + File.separator +"src" + File.separator + "data" + File.separator+ this.username;

@@ -8,10 +8,10 @@
 <AnchorPane prefHeight="403.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdministrationController">
    <children>
       <ListView fx:id="usersListView" prefHeight="250.0" prefWidth="300.0" />
-      <TextField alignment="CENTER" layoutX="57.0" layoutY="317.0" promptText="USER NAME" AnchorPane.bottomAnchor="125.0" AnchorPane.topAnchor="317.0" />
-      <TextField alignment="CENTER" layoutX="57.0" layoutY="357.0" promptText="PASSWORD" />
-      <Button fx:id="addButton" onAction="#addButton_Clicked" layoutX="46.0" layoutY="270.0" mnemonicParsing="false" text="Add" />
-      <Button fx:id="deleteButton" onAction="#deleteButton_Clicked" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" text="Delete" />
-      <Button fx:id="logOutButton" onAction="#logoutButton_Clicked" layoutX="178.0" layoutY="270.0" mnemonicParsing="false" text="Log out" />
+      <TextField id="user_Name" alignment="CENTER" layoutX="57.0" layoutY="317.0" promptText="USER NAME" AnchorPane.bottomAnchor="125.0" AnchorPane.topAnchor="317.0" />
+      <TextField id="password" alignment="CENTER" layoutX="57.0" layoutY="357.0" promptText="PASSWORD" />
+      <Button fx:id="addButton" layoutX="46.0" layoutY="270.0" mnemonicParsing="false" onAction="#addButton_Clicked" text="Add" />
+      <Button fx:id="deleteButton" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete" />
+      <Button fx:id="logOutButton" layoutX="178.0" layoutY="270.0" mnemonicParsing="false" onAction="#logoutButton_Clicked" text="Log out" />
    </children>
 </AnchorPane>

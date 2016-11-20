@@ -22,6 +22,8 @@ public class Main extends Application {
 	public static ArrayList<User> UserList;
 	public static User currentUser;
 	public static ArrayList<Photo> searchReturn;
+	public static User logged_in;
+	public static User regular_user;
 	
 
 	@Override
@@ -43,7 +45,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception {
 		UserList = new ArrayList<User>();
-		readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
+	//	readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
 		launch(args);
 	}
 	
