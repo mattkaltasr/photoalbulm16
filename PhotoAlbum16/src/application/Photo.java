@@ -45,7 +45,7 @@ public class Photo implements Serializable{
 	{
 		
 		phototags=new HashMap<String,ArrayList<String>>();
-		image = new Image("file:///" + uri,300,200,true,false);
+		image = new Image("file:///" + uri,1280,720,true,false);
 		File f = new File(uri);
 		
 		//GET CAPTION WHEN FIRST IMPORTING THE IMAGE
@@ -67,9 +67,9 @@ public class Photo implements Serializable{
 	}
 	
 	
-	public void getMetadata()
+	public String getUri()
 	{
-		
+		return uri;
 	}
 		
 	public Image getImage(){

@@ -3,23 +3,32 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane minHeight="650.0" minWidth="1000.0" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane minHeight="650.0" minWidth="1000.0" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.PhotoController">
    <children>
-      <ImageView fx:id="photoImgView" layoutX="186.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="view" />
-         </image>
-         <viewport>
-            <Rectangle2D height="600.0" width="800.0" />
-         </viewport>
-      </ImageView>
-      <Button fx:id="backButton" layoutX="16.0" layoutY="14.0" mnemonicParsing="false" text="&lt;---" />
-      <Label fx:id="nameLabel" layoutX="17.0" layoutY="487.0" text="Name/Caption" />
-      <Label fx:id="tagsLabel" layoutX="17.0" layoutY="106.0" text="Tags" />
-      <Button fx:id="deleteButton" layoutX="16.0" layoutY="573.0" mnemonicParsing="false" text="Delete Photo" />
-   </children>
-</AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="photoImgView" layoutX="186.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D height="600.0" width="800.0" />
+               </viewport>
+            </ImageView>
+            <Button fx:id="backButton" layoutX="16.0" layoutY="16.0" onAction="#backButton_Clicked" mnemonicParsing="false" text="&lt;---" />
+            <Label fx:id="nameLabel" layoutX="14.0" layoutY="545.0" maxWidth="150.0" text="Name/Caption" wrapText="true" />
+            <Label fx:id="tagsLabel" layoutX="16.0" layoutY="151.0" maxWidth="150.0" text="Tags" wrapText="true" />
+            <Button fx:id="deleteButton" layoutX="16.0" layoutY="602.0" onAction="#deleteButton_Clicked" mnemonicParsing="false" text="Delete Photo" />
+         </children>
+      </AnchorPane>
+     </children>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

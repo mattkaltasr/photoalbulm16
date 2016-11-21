@@ -53,12 +53,16 @@ public class AlbumPhotosPageController {
 
 	//AlbumsPageController.currentAlbum
 
+	public static Photo currentphoto;
 	private int slide_index;
 
 	private List<String> photos = new ArrayList<String>();
+	private List<Photo> albumphotos = new ArrayList<Photo>();
 	@FXML
 	public void initialize() throws IOException{
+		currentphoto = null;
 		photos = new ArrayList<String>();
+		albumphotos = new ArrayList<Photo>();
 		File file = new File(Main.currentUser.getUserDirectory()+File.separator+AlbumsPageController.currentAlbum);
 		File[] files = file.listFiles();
 
@@ -76,7 +80,10 @@ public class AlbumPhotosPageController {
 
 			ImageView imv = new ImageView();
 			Photo p = new Photo(photos.get(i));
+			albumphotos.add(p);
 			imv.setImage(p.getImage());
+			imv.setFitHeight(200);
+			imv.setFitWidth(300);
 			
 			Text label = new Text(p.getName());
 			label.setFill(javafx.scene.paint.Color.WHITE);
@@ -89,21 +96,43 @@ public class AlbumPhotosPageController {
 			
 			imv.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
+   			 Stage stage;
+   		     Parent root;
 				@Override
 				public void handle(MouseEvent event) {
 					// TODO Auto-generated method stub
-					Alert alert = new Alert(AlertType.INFORMATION);
-            		alert.setTitle("File Info");
-            		alert.setHeaderText("NOT IMPLEMENTED");
-            		alert.setContentText("File: " + ((ImageView) event.getSource()).getImage().toString());
-            		alert.showAndWait();
+					          		
+            		for(Photo p : albumphotos){
+            			if(p.getImage().equals(((ImageView) event.getSource()).getImage())){
+            				currentphoto = p;
+            				break;
+            			}
+            		}
+            		stage=(Stage) tileStack.getScene().getWindow();
+            		if(currentphoto != null){            		   
+            		   try{
+            		    root = FXMLLoader.load(getClass().getResource("Photo.fxml"));
+
+            		     Scene scene = new Scene(root);
+            		     stage.setScene(scene);
+            		     stage.show();
+            		   }catch(IOException e){
+            			   e.printStackTrace();
+            		   }
+            		}
+            		else{
+            			Alert alert = new Alert(AlertType.INFORMATION);
+                		alert.setTitle("Error");
+                		alert.setHeaderText("Couldn't Find The Image");
+                		alert.setContentText("File: " + ((ImageView) event.getSource()).getImage().toString());
+                		alert.showAndWait();
+            		}
 					
 				}
 			});
 			PhotosTilePane.getChildren().addAll(tileStack);
 		}
 	}
-			
 	
 	@FXML
 	public void ForwImgButton_Clicked(ActionEvent event) throws IOException {
