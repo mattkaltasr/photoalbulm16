@@ -145,6 +145,7 @@ public class AlbumsPageController {
 		}
 		
 		TilePane.getChildren().clear();
+		Main.currentUser.writeApp();
 		initialize();
 	}
 	
@@ -184,6 +185,7 @@ public class AlbumsPageController {
 			
 
 			TilePane.getChildren().clear();
+			Main.currentUser.writeApp();
 			initialize();
 		}
 		
@@ -200,7 +202,7 @@ public class AlbumsPageController {
 			dir.mkdir();
 			dir.renameTo(newName);
 		}
-		
+		Main.currentUser.writeApp();
 	}
 	
 	public void DeleteAlbum(File folder) {
@@ -214,6 +216,7 @@ public class AlbumsPageController {
 	            }
 	        }
 	    }
+		Main.currentUser.writeApp();
 	    folder.delete();
 	}
 
@@ -249,6 +252,7 @@ public class AlbumsPageController {
 		}
 
 		TilePane.getChildren().clear();
+		Main.currentUser.writeApp();
 		initialize();
 	}
 
