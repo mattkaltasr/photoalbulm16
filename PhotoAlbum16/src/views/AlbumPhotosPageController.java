@@ -170,8 +170,11 @@ public class AlbumPhotosPageController {
 		                		alert.showAndWait();		                		
 		                    }
 		 PhotosTilePane.getChildren().clear();
+		 Main.currentUser.writeApp();
 		 initialize();
+		 
 	}
+	
 
     final FileChooser fileChooser = new FileChooser();
 
