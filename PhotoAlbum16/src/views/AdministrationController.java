@@ -53,7 +53,7 @@ public class AdministrationController {
 	      
 			usersListView.setItems(null);
 		
-			obsList = FXCollections.observableList(Main.UserList);
+			obsList = FXCollections.observableList(Main.admin.getList());
 			  
 			usersListView.setItems(obsList);
 
@@ -84,6 +84,7 @@ public class AdministrationController {
 		}
 		User newuser = new User(newuser_name,newuser_pass);
 		Main.UserList.add(newuser);
+		newuser.writeApp();
 		
 		String uri = newuser.getUserDirectory();
 		File dir = new File(uri);

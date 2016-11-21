@@ -29,6 +29,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
+			getUserList();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/views/LoginPage.fxml"));
 			AnchorPane root = (AnchorPane)loader.load();
@@ -94,9 +95,11 @@ public class Main extends Application {
 			FileInputStream input = new FileInputStream("data/"+fileName);
 			ObjectInputStream inTemp=new ObjectInputStream(input);
 			temp=(User)inTemp.readObject();
+			System.out.print(temp);
 			inTemp.close();
 			input.close();
 		}catch(Exception e ){
+			e.printStackTrace();
 			System.out.println(" not a valid deserialization!");
 		}
 		return temp;
@@ -115,9 +118,12 @@ public class Main extends Application {
 		if (directoryListing!=null){
 			for (File temp : directoryListing){
 				String name=temp.getName();
-				if(name.toLowerCase().contains(".csv")){
-					User tempUser=getUserFile(name);
-					admin.getList().add(tempUser);
+				System.out.print(name);
+				if(name.toLowerCase().contains(".dat")){
+					User holderUser=getUserFile(name);
+				User tempUser=new User(holderUser.getUserName(),holderUser.getPassword());
+				admin.materUserList.add(tempUser);
+					System.out.print(tempUser + " " + admin.materUserList);
 					
 				}
 			}

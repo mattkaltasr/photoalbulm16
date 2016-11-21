@@ -64,14 +64,15 @@ public class User implements Serializable{
 	
 	//serilize data 
 	public void writeApp(){
-		try {
-	        FileOutputStream fileOut = new FileOutputStream("data/" + username + ".csv");
+		try  {
+	        FileOutputStream fileOut = new FileOutputStream("data/" + username + ".dat");
 	        ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	        out.writeObject(this);
 	        out.close();
 	        fileOut.close();
 	    } catch(Exception e) {
-	    	System.out.println("not valid  serialization.");
+	    	e.printStackTrace();
+	    	System.out.println("Invalid serialization.");
 	    }
 		
 	}

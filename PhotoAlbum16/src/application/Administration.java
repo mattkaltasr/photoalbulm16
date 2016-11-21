@@ -6,7 +6,7 @@ import application.Role;
 public class Administration extends User {
 	
 	private final static Role Admin=Role.admin;
-	private ArrayList<User> materUserList;
+	ArrayList<User> materUserList;
 	
 	
 	
