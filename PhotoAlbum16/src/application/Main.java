@@ -45,7 +45,7 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception {
 		UserList = new ArrayList<User>();
-	//	readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
+		//readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
 		launch(args);
 	}
 	

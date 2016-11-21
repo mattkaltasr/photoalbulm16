@@ -8,10 +8,15 @@
 <AnchorPane prefHeight="403.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.AdministrationController">
    <children>
       <ListView fx:id="usersListView" prefHeight="250.0" prefWidth="300.0" />
-      <TextField id="user_Name" alignment="CENTER" layoutX="57.0" layoutY="317.0" promptText="USER NAME" AnchorPane.bottomAnchor="125.0" AnchorPane.topAnchor="317.0" />
-      <TextField id="password" alignment="CENTER" layoutX="57.0" layoutY="357.0" promptText="PASSWORD" />
-      <Button fx:id="addButton" layoutX="46.0" layoutY="270.0" mnemonicParsing="false" onAction="#addButton_Clicked" text="Add" />
-      <Button fx:id="deleteButton" layoutX="102.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete" />
-      <Button fx:id="logOutButton" layoutX="178.0" layoutY="270.0" mnemonicParsing="false" onAction="#logoutButton_Clicked" text="Log out" />
+      <AnchorPane fx:id="newuserpane" layoutX="50.0" layoutY="325.0" maxHeight="150.0" maxWidth="200.0" minHeight="150.0" minWidth="200.0" prefHeight="150.0" prefWidth="200.0" visible="false">
+         <children>
+            <TextField id="user_Name" fx:id="usernameText" alignment="CENTER" promptText="USER NAME" />
+            <TextField id="password" fx:id="userpassText" alignment="CENTER" promptText="PASSWORD" AnchorPane.topAnchor="50.0" />
+            <Button fx:id="addButton" layoutX="152.0" layoutY="93.0" mnemonicParsing="false" onAction="#addButton_Clicked" text="Add" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="newUserButton" layoutX="14.0" layoutY="270.0" mnemonicParsing="false" onAction="#createnewuserButton_Clicked" text="New User" />
+      <Button fx:id="deleteButton" layoutX="108.0" layoutY="270.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete User" />
+      <Button fx:id="logOutButton" layoutX="214.0" layoutY="270.0" mnemonicParsing="false" onAction="#logoutButton_Clicked" text="Log out" />
    </children>
 </AnchorPane>

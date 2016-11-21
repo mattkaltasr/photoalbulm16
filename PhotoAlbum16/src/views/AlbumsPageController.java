@@ -51,7 +51,7 @@ public class AlbumsPageController {
 	public void initialize(){
 
 		currentAlbum = null;
-		albums = null;
+		//albums = null;
 		System.out.println("Albums page started");
 		File folder = new File(Main.currentUser.getUserDirectory());
 		albums= folder.list(new FilenameFilter(){
@@ -60,7 +60,8 @@ public class AlbumsPageController {
 				return new File(current,name).isDirectory();
 			}
 			});
-		System.out.println("Albums found: " + albums.toString());
+		//System.out.println("Albums found: " + albums.toString());
+		try{
 		for(int i = 0; i<albums.length; i++){
 
 			System.out.println("Adding to Tilepane");
@@ -92,9 +93,10 @@ public class AlbumsPageController {
 				}
 			     
 			});
-
 			TilePane.getChildren().addAll(tileStack);
 		}
+
+		}catch(Exception e){}
 	}
 	
 	public void start(Stage mainStage) throws Exception {  
@@ -129,9 +131,13 @@ public class AlbumsPageController {
 			albumname = result.get();
 		}
 		
-		if(albumname != null && !Arrays.asList(albums).contains(albumname)){
+		if(albums == null){
 		File dir = new File(Main.currentUser.getUserDirectory() + File.separator + albumname);
 		dir.mkdir();
+		}
+		else if(albumname != null && !Arrays.asList(albums).contains(albumname)){
+			File dir = new File(Main.currentUser.getUserDirectory() + File.separator + albumname);
+			dir.mkdir();	
 		}
 		else
 		{
