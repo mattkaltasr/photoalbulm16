@@ -95,7 +95,7 @@ public class AdministrationController {
 				  
 		userpassText.setText("");
 		usernameText.setText("");
-		newuserpane.setVisible(false);
+		newuserpane.setVisible(true);
 		refresh();
 	}
 

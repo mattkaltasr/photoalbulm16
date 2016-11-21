@@ -65,7 +65,7 @@ public class User implements Serializable{
 	//serilize data 
 	public void writeApp(){
 		try  {
-	        FileOutputStream fileOut = new FileOutputStream("data/" + username + ".dat");
+	        FileOutputStream fileOut = new FileOutputStream("data/"+File.separator + username + ".dat");
 	        ObjectOutputStream out = new ObjectOutputStream(fileOut);
 	        out.writeObject(this);
 	        out.close();
