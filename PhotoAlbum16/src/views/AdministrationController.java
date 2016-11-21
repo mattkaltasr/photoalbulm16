@@ -2,6 +2,8 @@ package views;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -120,6 +122,13 @@ public class AdministrationController {
 			
 			//File dir = new File(Main.currentUser.getUserDirectory() + File.separator + albumname);
 			//DeleteAlbum(dir);
+			try {
+				Files.delete(Paths.get("data/" + u.getUserName() + ".dat"));
+				
+				
+			} catch (Exception e1) {
+				System.out.println("Invalid serialized file to be deleted.");
+			}
 			Main.UserList.remove(u);
 		}
 		else {
