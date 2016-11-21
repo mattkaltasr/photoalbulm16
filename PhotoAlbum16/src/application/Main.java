@@ -30,6 +30,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		try {
 			getUserList();
+			UserList=admin.getList();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/views/LoginPage.fxml"));
 			AnchorPane root = (AnchorPane)loader.load();
