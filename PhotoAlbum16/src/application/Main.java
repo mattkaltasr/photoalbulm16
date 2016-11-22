@@ -17,6 +17,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
+/**
+ * @author matt kalita ang Yigit Gungor 
+ *
+ */
 public class Main extends Application {
 	public static Administration admin = new Administration("admin","password");
 	public static ArrayList<User> UserList;
@@ -24,8 +28,12 @@ public class Main extends Application {
 	public static ArrayList<Photo> searchReturn;
 	public static User logged_in;
 	public static User regular_user;
+	public static Photo photo;
 	
-
+	
+/**
+ *  start main stage 
+ */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		try {
@@ -44,14 +52,22 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * main start 
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		UserList = new ArrayList<User>();
 		//readDataFrom(System.getProperty("user.dir") + "/src/data/users.csv");
 		launch(args);
 	}
 	
-	
+	/**
+	 *  read data method for original read 
+	 * @param uri
+	 * @throws Exception
+	 */
 	public static void readDataFrom(String uri) throws Exception{
 		
 		BufferedReader br;
@@ -89,7 +105,11 @@ public class Main extends Application {
 	
 	
 	// gets files from file 
-	
+	/**
+	 * get user files from data 
+	 * @param fileName
+	 * @return
+	 */
 	public User getUserFile(String fileName){
 		User temp=null;
 		try{
@@ -110,7 +130,9 @@ public class Main extends Application {
 	
 	//gets list for running 
 	//of program 
-	
+	/**
+	 * method to return user list 
+	 */
 	public void getUserList(){
 		
 		File dir = new File ("data");

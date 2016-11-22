@@ -2,6 +2,7 @@ package views;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import application.Main;
@@ -86,6 +87,27 @@ public class PhotoController {
 		}
 		
 		if(tag != null && !p.getTagDisplay().contains("tag")){
+			
+			String key = "";  //need two input these two values upon add button hit 
+			String value = "";
+			if (key.trim().length() == 0 || value.trim().length() == 0) {
+				Alert error = new Alert(AlertType.INFORMATION);
+				error.setHeaderText("Error!");
+				error.setContentText("Both key and value are required!");
+				error.show();
+				return;
+			}
+			ArrayList<String> vals;
+			if (Main.photo.getPhotoTags().containsKey(key)) {
+				vals = Main.photo.getPhotoTags().get(key);
+			}
+			else {
+				vals = new ArrayList<String>();
+			Main.photo.getPhotoTags().put(key, vals);
+			}
+			Main.photo.getPhotoTags().get(key).add(value);
+			//tag_display = Main.photo.getTagDisplay(); //need to get tag display and update 
+			//tags.setText("Tags - " + tag_display);
 			// ADD THE TAG TO THE PHOTO P
 			// UPDATE THE FILE/SERIALIZED OBJECT TOO
 			// ALSO UPDATE "AlbumPhotosPageController.currentphoto"

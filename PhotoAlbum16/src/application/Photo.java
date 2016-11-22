@@ -32,6 +32,10 @@ import org.w3c.dom.NodeList;
 
 import javafx.scene.image.Image;
 
+/**
+ * @author matt kalita ang Yigit Gungor 
+ *
+ */
 public class Photo implements Serializable{
 
 	Image image;
@@ -41,6 +45,13 @@ public class Photo implements Serializable{
 	private HashMap<String, ArrayList<String>> phototags;
 	String[] tags;
 	
+	
+	
+	/**
+	 * photo constructor 
+	 * @param uri
+	 * @throws IOException
+	 */
 	public Photo(String uri) throws IOException
 	{
 		
@@ -56,39 +67,72 @@ public class Photo implements Serializable{
 		System.out.println(f.isFile());
 		System.out.println(f.getAbsolutePath());		
 	}
+	
+	
+	/**
+	 * three arg construct 
+	 * @param fileName
+	 * @param dtemp
+	 */
 	public Photo(File fileName,LocalDateTime dtemp){
 		this.name=fileName.getName();
 		date =dtemp;
 	}
 	
-	
+	/**
+	 * returns time for search 
+	 * @return
+	 */
 	public LocalDateTime getTime(){
 		return date;
 	}
 	
-	
+	/**
+	 * returns file name 
+	 * @return
+	 */
 	public String getUri()
 	{
 		return uri;
 	}
+	
+	
+	/**
+	 * method to return image 
+	 * @return
+	 */
 		
 	public Image getImage(){
 		return image;
 	}
+	
+	/**
+	 * method when called returns hash map 
+	 * @return
+	 */
 	public  HashMap<String, ArrayList<String>> getPhotoTags(){
 		return phototags;
 	}
 	
-	
+	/**
+	 * method to return Name value 
+	 * @return
+	 */
 	public String getName(){
 		return name;
 	}
 	
-	
+	/**
+	 * method to set name on photo 
+	 * @param name
+	 */
 	public void setName(String name){
 		this.name = name;
 	}
-	
+	/**
+	 * method to print tags if needed 
+	 * 
+	 */
 	public void printTags() {
 		for (String key : phototags.keySet()) {
 			for (int i = 0; i < phototags.get(key).size(); i++) {
@@ -102,7 +146,10 @@ public class Photo implements Serializable{
 	
 	
 	
-	
+	/**
+	 * method that returns a string to display the tags 
+	 * @return
+	 */
 	
 	public String getTagDisplay() {
 		String display = "";
