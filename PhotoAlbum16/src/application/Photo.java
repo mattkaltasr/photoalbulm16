@@ -40,11 +40,11 @@ public class Photo implements Serializable{
 
 	Image image;
 	String name;
-	LocalDateTime date;
+	long date;
 	String uri;
 	private HashMap<String, ArrayList<String>> phototags;
 	String[] tags;
-	
+	private File file_name;
 	
 	
 	/**
@@ -58,7 +58,7 @@ public class Photo implements Serializable{
 		phototags=new HashMap<String,ArrayList<String>>();
 		image = new Image("file:///" + uri,1280,720,true,false);
 		File f = new File(uri);
-		
+		date=f.lastModified();
 		//GET CAPTION WHEN FIRST IMPORTING THE IMAGE
 		// WHEN SERIALIZING USE THAT INSTEAD OF THE FILE NAME
 		this.name = f.getName();
@@ -74,16 +74,17 @@ public class Photo implements Serializable{
 	 * @param fileName
 	 * @param dtemp
 	 */
-	public Photo(File fileName,LocalDateTime dtemp){
+	public Photo(File fileName,long dtemp){
 		this.name=fileName.getName();
 		date =dtemp;
+		this.file_name=fileName;
 	}
 	
 	/**
 	 * returns time for search 
 	 * @return
 	 */
-	public LocalDateTime getTime(){
+	public long getTime(){
 		return date;
 	}
 	
@@ -105,6 +106,12 @@ public class Photo implements Serializable{
 	public Image getImage(){
 		return image;
 	}
+	
+	
+	public File getFile() {
+		return file_name;
+	}
+	
 	
 	/**
 	 * method when called returns hash map 

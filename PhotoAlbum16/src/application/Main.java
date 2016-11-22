@@ -29,7 +29,7 @@ public class Main extends Application {
 	public static User logged_in;
 	public static User regular_user;
 	public static Photo photo;
-	
+	public static Album album;
 	
 /**
  *  start main stage 

@@ -8,11 +8,17 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.io.*;
 
+import java.time.ZoneId;
+import java.util.*;
+
+import application.Album;
 import application.Main;
 import application.Photo;
 import javafx.event.ActionEvent;
@@ -121,9 +127,252 @@ public class AlbumsPageController {
 		}
 		
 		if(searchquery != null){
-			//RUN SEARCH
-			// populate: searchresults
-			searchResults = null;
+			Main.searchReturn = new ArrayList<Photo>();
+//need dialog for these terms 
+			LocalDate startDate = dialog.getStartDate();
+			LocalDate endDate = dialog.getEndDate();
+			String key = dialog.getKey().trim().toLowerCase();
+			String value = dialog.getValue().trim().toLowerCase();
+			if (startDate == null && endDate == null && key.length() == 0 && value.length() == 0) {
+				//goto search fxml("/view/Search.fxml");
+				return;
+			}
+				
+			
+				Album a = Main.album;
+				ArrayList<Photo> photos = a.getPhotos();
+				for(int i = 0; i < photos.size(); i++){
+					File file = photos.get(i).getFile();
+					Date d = new Date(file.lastModified());
+					LocalDate date = d.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+					if(startDate == null && endDate == null){
+						if(key.length() > 0 && value.length() > 0){
+							for (String k : photos.get(i).getPhotoTags().keySet()) {
+								if (k.contains(key) && photos.get(i).getPhotoTags().get(k).contains(value)) {
+									boolean duplicate = false;
+									for(Photo p: Main.searchReturn){
+										if(p.getImage().equals(photos.get(i).getImage())){
+											duplicate = true;
+										}
+									}
+									if(duplicate == false){
+										Main.searchReturn.add(photos.get(i));
+									}
+								}
+							}
+						} else if (key.length() > 0 && value.length() == 0) {
+							for (String k : photos.get(i).getPhotoTags().keySet()) {
+								if (k.contains(key)) {
+									boolean duplicate = false;
+									for(Photo p: Main.searchReturn){
+										if(p.getImage().equals(photos.get(i).getImage())){
+											duplicate = true;
+										}
+									}
+									if(duplicate == false){
+										Main.searchReturn.add(photos.get(i));
+									}
+								}
+							}
+						} else if (value.length() > 0 && key.length() == 0) {
+							for (String k : photos.get(i).getPhotoTags().keySet()) {
+								if (photos.get(i).getPhotoTags().get(k).contains(value)) {
+									boolean duplicate = false;
+									for(Photo p: Main.searchReturn){
+										if(p.getImage().equals(photos.get(i).getImage())){
+											duplicate = true;
+										}
+									}
+									if(duplicate == false){
+										Main.searchReturn.add(photos.get(i));
+									}
+								}
+							}
+						} else {
+							boolean duplicate = false;
+							for(Photo p: Main.searchReturn){
+								if(p.getImage().equals(photos.get(i).getImage())){
+									duplicate = true;
+								}
+							}
+							if(duplicate == false){
+								Main.searchReturn.add(photos.get(i));
+							}
+						}
+					} else if(startDate == null && endDate != null){
+						if(date.compareTo(endDate) <= 0){
+							if(key.length() > 0 && value.length() > 0){
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key) && photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (key.length() > 0 && value.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (value.length() > 0 && key.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else {
+								boolean duplicate = false;
+								for(Photo p: Main.searchReturn){
+									if(p.getImage().equals(photos.get(i).getImage())){
+										duplicate = true;
+									}
+								}
+								if(duplicate == false){
+									Main.searchReturn.add(photos.get(i));
+								}
+							}
+						}
+					} else if (endDate == null && startDate != null){
+						if(date.compareTo(startDate) >= 0){ 
+							if(key.length() > 0 && value.length() > 0){
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key) && photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (key.length() > 0 && value.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (value.length() > 0 && key.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else {
+								boolean duplicate = false;
+								for(Photo p: Main.searchReturn){
+									if(p.getImage().equals(photos.get(i).getImage())){
+										duplicate = true;
+									}
+								}
+								if(duplicate == false){
+									Main.searchReturn.add(photos.get(i));
+								}
+							}
+						}
+					} else {
+						if(date.compareTo(startDate) >= 0 && date.compareTo(endDate) <= 0){ 
+							if(key.length() > 0 && value.length() > 0){
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key) && photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (key.length() > 0 && value.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (k.contains(key)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else if (value.length() > 0 && key.length() == 0) {
+								for (String k : photos.get(i).getPhotoTags().keySet()) {
+									if (photos.get(i).getPhotoTags().get(k).contains(value)) {
+										boolean duplicate = false;
+										for(Photo p: Main.searchReturn){
+											if(p.getImage().equals(photos.get(i).getImage())){
+												duplicate = true;
+											}
+										}
+										if(duplicate == false){
+											Main.searchReturn.add(photos.get(i));
+										}
+									}
+								}
+							} else {
+								boolean duplicate = false;
+								for(Photo p: Main.searchReturn){
+									if(p.getImage().equals(photos.get(i).getImage())){
+										duplicate = true;
+									}
+								}
+								if(duplicate == false){
+									Main.searchReturn.add(photos.get(i));
+								}
+							}
+						}
+					}
+				}
+				//goto search fmxl with result ("/view/Search.fxml");
+			}
+		}
+			
 			
 			
 			 Stage stage;
@@ -136,15 +385,9 @@ public class AlbumsPageController {
 		     stage.setScene(scene);
 		     stage.show();
 			
-		}else{
-
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("ERROR");
-			alert.setHeaderText("An error occured while searching for: " + searchquery);
-			alert.showAndWait();
 		}
 	
-	}
+	
 	
 	@FXML
 	public void logoutButton_Clicked(ActionEvent event) throws IOException {

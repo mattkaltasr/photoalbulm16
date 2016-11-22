@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import application.Role;
 
 /**
- * @author matt kalita ang Yigit Gungor 
+ * @author matt kalita and Yigit Gungor 
  *
  */
 public class User implements Serializable{
@@ -15,7 +17,7 @@ public class User implements Serializable{
 	private String username;
 	private String password;
 	private Role role;
-	
+	private ArrayList<Album> albums;
 	
 	
 	/**
@@ -28,6 +30,7 @@ public class User implements Serializable{
 		this.username = username;
 		this.password = password;
 		this.role = role;
+		albums = new ArrayList<Album>();
 	}
 	
 	/**
@@ -39,7 +42,7 @@ public class User implements Serializable{
 		this.username = username;
 		this.password = Password;
 		this.role = user;
-		
+		albums = new ArrayList<Album>();
 		
 		
 	}
@@ -123,5 +126,12 @@ public class User implements Serializable{
 	    	System.out.println("Invalid serialization.");
 	    }
 		
+		
+		
+	}
+	
+	
+	public ArrayList<Album> getAlbums() {
+		return albums;
 	}
 }

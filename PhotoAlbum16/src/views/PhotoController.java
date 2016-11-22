@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +45,10 @@ public class PhotoController {
 	private Button changeNameButton;
 	@FXML
 	private Button copyButton;
+	public static boolean search;
+
+	private String tag_display;
 	
-	Photo p = null;
 	
 	public void start(Stage mainStage) throws Exception {      
 		initialize();
@@ -53,11 +56,11 @@ public class PhotoController {
 	
 	@FXML
 	public void initialize(){
-		p = AlbumPhotosPageController.currentphoto;		
-		if(p != null){
-		photoImgView.setImage(p.getImage());
-		nameLabel.setText(p.getName());
-		tagsLabel.setText(p.getTagDisplay());
+		Main.photo = AlbumPhotosPageController.currentphoto;		
+		if(Main.photo != null){
+		photoImgView.setImage(Main.photo.getImage());
+		nameLabel.setText(Main.photo.getName());
+		tagsLabel.setText(Main.photo.getTagDisplay());
 		}
 	}
 	
@@ -191,7 +194,7 @@ public class PhotoController {
 			entered_tag = result_tag.get();
 		}
 		
-		if(entered_tag != null && entered_key != null && !p.getTagDisplay().contains("tag")){
+		if(entered_tag != null && entered_key != null && !Main.photo.getTagDisplay().contains("tag")){
 			
 			String key = entered_key;  //need two input these two values upon add button hit 
 			String value = entered_tag;
@@ -216,7 +219,8 @@ public class PhotoController {
 			//tags.setText("Tags - " + tag_display);
 			// ADD THE TAG TO THE PHOTO P
 			// UPDATE THE FILE/SERIALIZED OBJECT TOO
-			// ALSO UPDATE "AlbumPhotosPageController.currentphoto"
+			//AlbumPhotosPageController.currentphoto=Main.photo;
+			Main.regular_user.writeApp();
 			initialize();
 		}
 		else{
@@ -242,10 +246,21 @@ public class PhotoController {
 			tag = result.get();
 		}
 		
-		if(tag != null && p.getTagDisplay().contains("tag")){
+		if(tag != null && Main.photo.getTagDisplay().contains("tag")){
 			// REMOVE THE TAG TO THE PHOTO P
 			// UPDATE THE FILE/SERIALIZED OBJECT TOO
 			// ALSO UPDATE "AlbumPhotosPageController.currentphoto"
+			
+			Photo photo = Main.photo;
+			HashMap<String, ArrayList<String>> taglist = photo.getPhotoTags();
+			if(tag.length() > 0){
+				String key = tag.trim();
+				while(taglist.remove(key) != null);
+			} 
+			//tag_display = Main.photo.getTagDisplay();  needs to refresh list ?
+			//tags.setText("Tags - " + tag_display);
+			//AlbumPhotosPageController.currentphoto=Main.photo;
+			Main.regular_user.writeApp();
 			initialize();
 		}
 		else{
@@ -257,5 +272,8 @@ public class PhotoController {
 		}
 		
 	}
+	
+	
+	
 	
 }
