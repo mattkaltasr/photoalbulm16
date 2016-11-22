@@ -110,6 +110,7 @@ public class AlbumsPageController {
 	     Parent root;     
 	     
 	     stage=(Stage) logoutButton.getScene().getWindow();
+	     Main.currentUser.writeApp();
 	     root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 
 	     Scene scene = new Scene(root);

@@ -18,10 +18,12 @@
                   <Rectangle2D height="600.0" width="800.0" />
                </viewport>
             </ImageView>
-            <Button fx:id="backButton" layoutX="16.0" layoutY="16.0" onAction="#backButton_Clicked" mnemonicParsing="false" text="&lt;---" />
-            <Label fx:id="nameLabel" layoutX="14.0" layoutY="545.0" maxWidth="150.0" text="Name/Caption" wrapText="true" />
-            <Label fx:id="tagsLabel" layoutX="16.0" layoutY="151.0" maxWidth="150.0" text="Tags" wrapText="true" />
-            <Button fx:id="deleteButton" layoutX="16.0" layoutY="602.0" onAction="#deleteButton_Clicked" mnemonicParsing="false" text="Delete Photo" />
+            <Button fx:id="backButton" layoutX="16.0" layoutY="16.0" mnemonicParsing="false" onAction="#backButton_Clicked" text="&lt;---" />
+            <Label id="caption" fx:id="nameLabel" layoutX="14.0" layoutY="545.0" maxWidth="150.0" text="Name/Caption" wrapText="true" />
+            <Label id="tags" fx:id="tagsLabel" layoutX="16.0" layoutY="151.0" maxWidth="150.0" text="Tags" wrapText="true" />
+            <Button fx:id="deleteButton" layoutX="16.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete Photo" />
+            <Button id="addTag" layoutX="172.0" layoutY="602.0" mnemonicParsing="false" text="Add tag" />
+            <Button id="RemoveTag" layoutX="258.0" layoutY="602.0" mnemonicParsing="false" text="Remove tag" />
          </children>
       </AnchorPane>
      </children>

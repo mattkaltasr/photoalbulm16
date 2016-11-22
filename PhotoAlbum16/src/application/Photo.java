@@ -85,7 +85,41 @@ public class Photo implements Serializable{
 	}
 	
 	
+	public void setName(String name){
+		this.name = name;
+	}
 	
+	public void printTags() {
+		for (String key : phototags.keySet()) {
+			for (int i = 0; i < phototags.get(key).size(); i++) {
+				System.out.println(key + " - " + phototags.get(key).get(i));
+			}
+		}
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getTagDisplay() {
+		String display = "";
+		for (String key : phototags.keySet()) {
+			String key_display = key + ": ";
+			for (int i = 0; i < phototags.get(key).size(); i++) {
+				String val = phototags.get(key).get(i);
+				key_display += val + ", ";
+			}
+			key_display = key_display.substring(0, key_display.length() - 2);
+			display += key_display + "; ";
+		}
+		if (display.length() > 0) {
+			display = display.substring(0, display.length() - 2);
+		}
+		return display;
+	}
 	
 	
 }
