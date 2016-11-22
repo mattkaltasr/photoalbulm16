@@ -21,9 +21,12 @@
             <Button fx:id="backButton" layoutX="16.0" layoutY="16.0" mnemonicParsing="false" onAction="#backButton_Clicked" text="&lt;---" />
             <Label id="caption" fx:id="nameLabel" layoutX="14.0" layoutY="545.0" maxWidth="150.0" text="Name/Caption" wrapText="true" />
             <Label id="tags" fx:id="tagsLabel" layoutX="16.0" layoutY="165.0" maxWidth="150.0" text="Tags" wrapText="true" />
-            <Button fx:id="deleteButton" layoutX="16.0" layoutY="602.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete Photo" />
-            <Button id="addTag" fx:id="addTagButton" onAction="#addTagButton_Clicked" layoutX="16.0" layoutY="120.0" mnemonicParsing="false" text="Add tag" />
-            <Button id="RemoveTag" fx:id="removeTagButton" onAction="#removeTagButton_Clicked" layoutX="97.0" layoutY="120.0" mnemonicParsing="false" text="Remove tag" />
+            <Button fx:id="changeNameButton" onAction="#changenameButton_Clicked" layoutX="15.0" layoutY="582.0" mnemonicParsing="false" text="Change Name" />
+            <Button fx:id="deleteButton" layoutX="19.0" layoutY="617.0" mnemonicParsing="false" onAction="#deleteButton_Clicked" text="Delete Photo" />
+            <Button id="addTag" fx:id="addTagButton" layoutX="16.0" layoutY="120.0" mnemonicParsing="false" onAction="#addTagButton_Clicked" text="Add tag" />
+            <Button id="RemoveTag" fx:id="removeTagButton" layoutX="97.0" layoutY="120.0" mnemonicParsing="false" onAction="#removeTagButton_Clicked" text="Remove tag" />
+            <Button fx:id="moveButton" onAction="#moveButton_Clicked" layoutX="139.0" layoutY="582.0" mnemonicParsing="false" text="Move" />
+            <Button fx:id="copyButton" onAction="#copyButton_Clicked" layoutX="141.0" layoutY="617.0" mnemonicParsing="false" text="Copy" />
          </children>
       </AnchorPane>
      </children>

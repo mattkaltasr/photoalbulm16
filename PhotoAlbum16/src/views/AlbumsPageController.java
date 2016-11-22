@@ -8,11 +8,13 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import application.Main;
+import application.Photo;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -39,6 +41,7 @@ import javafx.stage.Stage;
 public class AlbumsPageController {
 	
 	public static String currentAlbum;
+	public static ArrayList searchResults;
 	
 	@FXML
 	private TilePane TilePane;
@@ -51,6 +54,7 @@ public class AlbumsPageController {
 	public void initialize(){
 
 		currentAlbum = null;
+		searchResults = null;
 		//albums = null;
 		System.out.println("Albums page started");
 		File folder = new File(Main.currentUser.getUserDirectory());
@@ -102,6 +106,45 @@ public class AlbumsPageController {
 	public void start(Stage mainStage) throws Exception {  
 	      
 	   }
+	
+	
+	@FXML
+	public void Search_Clicked(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("New Search");
+		dialog.setHeaderText("What do you want to search for?");
+		Optional<String> result = dialog.showAndWait();
+
+		String searchquery = null;
+		if(result.isPresent()){
+			searchquery = result.get();
+		}
+		
+		if(searchquery != null){
+			//RUN SEARCH
+			// populate: searchresults
+			searchResults = null;
+			
+			
+			 Stage stage;
+		     Parent root;     
+		     
+		     stage=(Stage) logoutButton.getScene().getWindow();
+		     root = FXMLLoader.load(getClass().getResource("Search.fxml"));
+
+		     Scene scene = new Scene(root);
+		     stage.setScene(scene);
+		     stage.show();
+			
+		}else{
+
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("ERROR");
+			alert.setHeaderText("An error occured while searching for: " + searchquery);
+			alert.showAndWait();
+		}
+	
+	}
 	
 	@FXML
 	public void logoutButton_Clicked(ActionEvent event) throws IOException {

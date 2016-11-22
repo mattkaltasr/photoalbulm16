@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
@@ -22,7 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import application.Main;
 import application.Photo;
@@ -85,7 +86,10 @@ public class AlbumPhotosPageController {
 			imv.setFitHeight(200);
 			imv.setFitWidth(300);
 			
-			Text label = new Text(p.getName());
+			String caption = p.getName();
+			caption = caption.replaceAll(".jpeg", "");
+			caption = caption.replaceAll(".jpg", "");
+			Text label = new Text(caption);
 			label.setFill(javafx.scene.paint.Color.WHITE);
 			
 			StackPane tileStack = new StackPane();
@@ -101,7 +105,8 @@ public class AlbumPhotosPageController {
 				@Override
 				public void handle(MouseEvent event) {
 					// TODO Auto-generated method stub
-					          		
+					  
+					
             		for(Photo p : albumphotos){
             			if(p.getImage().equals(((ImageView) event.getSource()).getImage())){
             				currentphoto = p;
@@ -127,7 +132,6 @@ public class AlbumPhotosPageController {
                 		alert.setContentText("File: " + ((ImageView) event.getSource()).getImage().toString());
                 		alert.showAndWait();
             		}
-					
 				}
 			});
 			PhotosTilePane.getChildren().addAll(tileStack);
@@ -186,9 +190,23 @@ public class AlbumPhotosPageController {
 		 configureFileChooser(fileChooser);
 		                    File file = fileChooser.showOpenDialog(stage);
 		                    if (file != null) {
-		                    	
+		                    	TextInputDialog dialog = new TextInputDialog();
+		                		dialog.setTitle("Caption this photo");
+		                		dialog.setHeaderText("Add a new caption");
+		                		dialog.setContentText("What is the name/caption for this photo? (Leave blank if you want to keep the file name)");
+		                		Optional<String> result = dialog.showAndWait();
+
+		                		String caption = null;
+		                		if(result.isPresent()){
+		                			caption = result.get();
+		                		}
+		                		if(caption != null && !caption.isEmpty()){
+		                			caption = caption + ".jpeg";
+		                		}else{
+		                			caption = file.getName();
+		                		}
 		                    	// copy(from,to,options)
-		                    	Files.copy(file.toPath(), Paths.get(Main.currentUser.getUserDirectory()+File.separator+AlbumsPageController.currentAlbum+File.separator+file.getName()), java.nio.file.StandardCopyOption.COPY_ATTRIBUTES,
+		                    	Files.copy(file.toPath(), Paths.get(Main.currentUser.getUserDirectory()+File.separator+AlbumsPageController.currentAlbum+File.separator+caption), java.nio.file.StandardCopyOption.COPY_ATTRIBUTES,
 		                    												 java.nio.file.LinkOption.NOFOLLOW_LINKS,
 		                    												 java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 		                    	
