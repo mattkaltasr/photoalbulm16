@@ -128,13 +128,16 @@ public class AlbumsPageController {
 		
 		if(searchquery != null){
 			Main.searchReturn = new ArrayList<Photo>();
-//need dialog for these terms 
+//need dialog for these terms
 			LocalDate startDate = dialog.getStartDate();
 			LocalDate endDate = dialog.getEndDate();
 			String key = dialog.getKey().trim().toLowerCase();
 			String value = dialog.getValue().trim().toLowerCase();
 			if (startDate == null && endDate == null && key.length() == 0 && value.length() == 0) {
-				//goto search fxml("/view/Search.fxml");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("ERROR");
+				alert.setHeaderText("Something went wrong we couldn't find any photos related to " + searchquery);
+				alert.showAndWait();
 				return;
 			}
 				
@@ -369,23 +372,22 @@ public class AlbumsPageController {
 						}
 					}
 				}
-				//goto search fmxl with result ("/view/Search.fxml");
+
+				 searchResults = Main.searchReturn;
+				 Stage stage;
+			     Parent root;     
+			     
+			     stage=(Stage) logoutButton.getScene().getWindow();
+			     root = FXMLLoader.load(getClass().getResource("Search.fxml"));
+
+			     Scene scene = new Scene(root);
+			     stage.setScene(scene);
+			     stage.show();
 			}
 		}
 			
 			
-			
-			 Stage stage;
-		     Parent root;     
-		     
-		     stage=(Stage) logoutButton.getScene().getWindow();
-		     root = FXMLLoader.load(getClass().getResource("Search.fxml"));
-
-		     Scene scene = new Scene(root);
-		     stage.setScene(scene);
-		     stage.show();
-			
-		}
+		
 	
 	
 	
