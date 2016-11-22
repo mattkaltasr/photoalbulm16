@@ -177,6 +177,7 @@ public class PhotoController {
 		String entered_key = null;
 		if(result.isPresent()){
 			entered_key = result.get();
+			System.out.print("Key :"+entered_key );
 		}
 		
 		dialog = new TextInputDialog();
@@ -184,16 +185,19 @@ public class PhotoController {
 		dialog.setHeaderText("Add a new tag");
 		dialog.setContentText("Enter the tag: ");
 		Optional<String> result_tag = dialog.showAndWait();
+		
 
 		String entered_tag = null;
 		if(result_tag.isPresent()){
 			entered_tag = result.get();
+			System.out.print(" tag :"+entered_tag);
 		}
 		
 		if(entered_tag != null && entered_key != null && !p.getTagDisplay().contains("tag")){
 			
 			String key = entered_key;  //need two input these two values upon add button hit 
 			String value = entered_tag;
+			System.out.print("Key :"+key +" tag :"+value);
 			if (key.trim().length() == 0 || value.trim().length() == 0) {
 				Alert error = new Alert(AlertType.ERROR);
 				error.setHeaderText("Error!");
