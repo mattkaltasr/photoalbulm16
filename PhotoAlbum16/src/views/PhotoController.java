@@ -177,20 +177,18 @@ public class PhotoController {
 		String entered_key = null;
 		if(result.isPresent()){
 			entered_key = result.get();
-			System.out.print("Key :"+entered_key );
 		}
 		
-		dialog = new TextInputDialog();
-		dialog.setTitle("New Tag");
-		dialog.setHeaderText("Add a new tag");
-		dialog.setContentText("Enter the tag: ");
-		Optional<String> result_tag = dialog.showAndWait();
+		TextInputDialog tag_dialog = new TextInputDialog();
+		tag_dialog.setTitle("New Tag");
+		tag_dialog.setHeaderText("Add a new tag");
+		tag_dialog.setContentText("Enter the tag: ");
+		Optional<String> result_tag = tag_dialog.showAndWait();
 		
 
 		String entered_tag = null;
 		if(result_tag.isPresent()){
-			entered_tag = result.get();
-			System.out.print(" tag :"+entered_tag);
+			entered_tag = result_tag.get();
 		}
 		
 		if(entered_tag != null && entered_key != null && !p.getTagDisplay().contains("tag")){
