@@ -49,11 +49,17 @@ public class AdministrationController {
 	
 	ObservableList<User> obsList;
 
-
+/**
+ * sets main stage 
+ * @param mainStage
+ * @throws Exception
+ */
 	public void start(Stage mainStage) throws Exception {      
 	
 	}
-	
+	/**
+	 * initalize userlist 
+	 */
 	@FXML
 	public void initialize(){
 	      
@@ -66,12 +72,22 @@ public class AdministrationController {
 		    usersListView.getSelectionModel().select(0);
 	}
 	
-
+/**
+ * creates new user on click 
+ * @param event
+ * @throws Exception
+ */
 	@FXML
 	public void createnewuserButton_Clicked(ActionEvent event) throws Exception {
 		newuserpane.setVisible(true);
 	}
 	
+	
+	/**
+	 * add user on click 
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void addButton_Clicked(ActionEvent event) throws Exception {
 
@@ -104,7 +120,12 @@ public class AdministrationController {
 		newuserpane.setVisible(true);
 		refresh();
 	}
-
+/**
+ * delete
+ * button for user 
+ * @param event
+ * @throws Exception
+ */
 	@FXML
 	public void deleteButton_Clicked(ActionEvent event) throws Exception {
 		
@@ -140,7 +161,11 @@ public class AdministrationController {
 		
 		refresh();
 	}
-	
+	/**
+	 * logout button action 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void logoutButton_Clicked(ActionEvent event) throws IOException {
 		
@@ -157,7 +182,10 @@ public class AdministrationController {
 	}
 	
 
-	
+	/**
+	 * refreshes list 
+	 * @throws Exception
+	 */
 	//CALL AFTER ADD - DELETE
 	public void refresh() throws Exception{
 		initialize();

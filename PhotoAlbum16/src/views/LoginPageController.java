@@ -21,6 +21,10 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.control.PasswordField;
 
+/**
+ * @author matt kalita and yigit gungor 
+ *
+ */
 public class LoginPageController {
 	@FXML
 	private TextField user_tb;
@@ -30,13 +34,22 @@ public class LoginPageController {
 	private Button login_btn;
 	
 
-	
+	/**
+	 * start method 
+	 * @param mainStage
+	 * @throws Exception
+	 */
 	public void start(Stage mainStage) throws Exception {      
 	      
 	   }
 
 	
 	// Event Listener on Button[#login_btn].onAction
+	/**
+	 * login click watcher 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void Login_Clicked(ActionEvent event) throws IOException {
 

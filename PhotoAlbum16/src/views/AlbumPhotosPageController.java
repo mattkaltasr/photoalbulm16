@@ -40,6 +40,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * @author matt kalita and yigit gungor 
+ *
+ */
 public class AlbumPhotosPageController {
 	@FXML
 	private Button Back_Button;
@@ -59,6 +63,12 @@ public class AlbumPhotosPageController {
 
 	private List<String> photos = new ArrayList<String>();
 	private List<Photo> albumphotos = new ArrayList<Photo>();
+	
+	
+	/**
+	 * initialize method 
+	 * @throws IOException
+	 */
 	@FXML
 	public void initialize() throws IOException{
 		currentphoto = null;
@@ -137,7 +147,11 @@ public class AlbumPhotosPageController {
 			PhotosTilePane.getChildren().addAll(tileStack);
 		}
 	}
-	
+	/**
+	 * forward button listner 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ForwImgButton_Clicked(ActionEvent event) throws IOException {
 			
@@ -150,7 +164,11 @@ public class AlbumPhotosPageController {
 		}
 		big_imageview.setImage(new Photo(photos.get(slide_index)).getImage());
 	}
-	
+	/**
+	 * back button listener
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void BackImgButton_Clicked(ActionEvent event) throws IOException {
 		
@@ -165,7 +183,12 @@ public class AlbumPhotosPageController {
 	}
 	
 	// Event Listener on Button[#Back_Button].onAction
-	@FXML
+	/**
+	 * back to main listner 
+	 * @param event
+	 * @throws IOException
+	 */
+	@FXML	
 	public void BackButton_Clicked(ActionEvent event) throws IOException {
 
 		 Stage stage;
@@ -181,7 +204,11 @@ public class AlbumPhotosPageController {
 	
 	
 	
-	
+	/**
+	 * add photo listner 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void AddPhotos_Clicked(ActionEvent event) throws IOException
 	{
@@ -224,7 +251,10 @@ public class AlbumPhotosPageController {
 	
 
     final FileChooser fileChooser = new FileChooser();
-
+/**
+ * uses files for photos 
+ * @param fileChooser
+ */
 	private static void configureFileChooser(
 	        final FileChooser fileChooser) {      
 	            fileChooser.setTitle("View Pictures");
@@ -238,7 +268,10 @@ public class AlbumPhotosPageController {
 	    }
 
 
-	
+	/**
+	 * edit photo listner 
+	 * @param event
+	 */
 	@FXML
 	public void EditPhotos_Clicked(ActionEvent event)
 	{

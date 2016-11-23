@@ -130,7 +130,10 @@ public class User implements Serializable{
 		
 	}
 	
-	
+	/**
+	 * returns list of albums 
+	 * @return
+	 */
 	public ArrayList<Album> getAlbums() {
 		return albums;
 	}

@@ -25,17 +25,29 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * @author matt kalita anf yigit gungor 
+ *
+ */
 public class SearchController {
 	@FXML
 	private TilePane PhotosTilePane;
 	@FXML
 	private Button Back_Button;
 	 
-	
+	/**
+	 * start main stage 
+	 * @param mainStage
+	 * @throws Exception
+	 */
 	public void start(Stage mainStage) throws Exception {      
 		
 	}
-	
+	/**
+	 * backbutton listner 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void backButtonClicked(ActionEvent event) throws IOException
 	{
@@ -51,7 +63,9 @@ public class SearchController {
 		
 	}
 	
-	
+	/**
+	 * initialize scene method 
+	 */
 	@FXML
 	public void initialize(){
 		List<Photo> photos = AlbumsPageController.searchResults;

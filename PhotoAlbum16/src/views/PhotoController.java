@@ -28,6 +28,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * @author matt kalita anf yigit gungor 
+ *
+ */
 public class PhotoController {
 	@FXML
 	private ImageView photoImgView;
@@ -49,11 +53,17 @@ public class PhotoController {
 
 	private String tag_display;
 	
-	
+	/**
+	 * starts main stage 
+	 * @param mainStage
+	 * @throws Exception
+	 */
 	public void start(Stage mainStage) throws Exception {      
 		initialize();
 	}
-	
+	/**
+	 * initializes controller 
+	 */
 	@FXML
 	public void initialize(){
 		Main.photo = AlbumPhotosPageController.currentphoto;		
@@ -63,7 +73,11 @@ public class PhotoController {
 		tagsLabel.setText(Main.photo.getTagDisplay());
 		}
 	}
-	
+	/**
+	 * change name button 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void changenameButton_Clicked(ActionEvent event) throws IOException{
 		File pic = new File(Main.currentUser.getUserDirectory() + File.separator + AlbumsPageController.currentAlbum + File.separator + AlbumPhotosPageController.currentphoto.getName());
@@ -82,6 +96,12 @@ public class PhotoController {
 		pic.renameTo(new File(Main.currentUser.getUserDirectory() + File.separator + AlbumsPageController.currentAlbum + File.separator + newcaption));
 		backButton_Clicked(event);
 	}
+	
+	/**
+	 * move button method 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void moveButton_Clicked(ActionEvent event) throws IOException {
 		File pic = new File(Main.currentUser.getUserDirectory() + File.separator + AlbumsPageController.currentAlbum + File.separator + AlbumPhotosPageController.currentphoto.getName());
@@ -113,6 +133,12 @@ public class PhotoController {
 		Files.move(pic.toPath(), newpic.toPath(), StandardCopyOption.REPLACE_EXISTING);
 		backButton_Clicked(event);
 	}
+	
+	/**
+	 * copy button watcher method 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void copyButton_Clicked(ActionEvent event) throws IOException {
 		File pic = new File(Main.currentUser.getUserDirectory() + File.separator + AlbumsPageController.currentAlbum + File.separator + AlbumPhotosPageController.currentphoto.getName());
@@ -145,7 +171,11 @@ public class PhotoController {
 		backButton_Clicked(event);
 	}
 	
-	
+	/**
+	 * back button listner method 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void backButton_Clicked(ActionEvent event) throws IOException {
 		
@@ -160,7 +190,11 @@ public class PhotoController {
 	     stage.show();
 		
 	}
-	
+	/**
+	 * delete button method 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void deleteButton_Clicked(ActionEvent event) throws IOException {
 		//DELETE
@@ -169,6 +203,11 @@ public class PhotoController {
 		backButton_Clicked(event);
 	}
 	
+	/**
+	 * adds tag to photo 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void addTagButton_Clicked(ActionEvent event) throws IOException {
  		TextInputDialog dialog = new TextInputDialog();
@@ -231,7 +270,11 @@ public class PhotoController {
 			alert.showAndWait();
 		}
 	}
-	
+	/**
+	 * removes tag from photo 
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void removeTagButton_Clicked(ActionEvent event) throws IOException {
 		

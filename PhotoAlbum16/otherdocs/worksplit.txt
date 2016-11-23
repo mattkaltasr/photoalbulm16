@@ -5,11 +5,11 @@
   photo album work split 
   
   log-in/invalid log in        Yigit Gungor                  -  Authentication works, errors are not working yet.
-  admin panel                  matthew kalitasr
+  admin panel                  matthew kalitasr              added album class 
   albums page                  Yigit Gungor                  -  Done
   editing alb page             matthew kalitasr				 -  Done YG
   album photo page             Yigit Gungor                  -  UI DONE - Waiting for photo display to add click on image
-  photo display                Matthew kalitasr 
+  photo display                Matthew kalitasr                working display but tags dont save 
   adding albums photos         Yigit Gungor					 -  DONE 
-  search                       Matthew kalita sr 
+  search                       Matthew kalita sr               -added but not operational 
   tags                         Yigit Gungor					 -  Waiting for photo display
