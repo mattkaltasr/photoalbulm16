@@ -160,8 +160,15 @@ public class AlbumsPageController {
 		}
 		
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        Date start_date = simpleDateFormat.parse(startdate);
-        Date end_date = simpleDateFormat.parse(enddate);
+        Date start_date = null;
+        Date end_date = null;
+        try{
+        start_date = simpleDateFormat.parse(startdate);
+        end_date = simpleDateFormat.parse(enddate);
+        }
+        catch(ParseException e)
+        {
+        }
 		
 
 		if(key != null && value != null && start_date != null && end_date != null){
@@ -421,10 +428,14 @@ public class AlbumsPageController {
 			     Scene scene = new Scene(root);
 			     stage.setScene(scene);
 			     stage.show();
+			}else{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("ERROR");
+			alert.setHeaderText("Something went wrong we couldn't find any photos related to your input.");
+			alert.showAndWait();
+			return;
 			}
 		}
-			
-			
 		
 	
 	
