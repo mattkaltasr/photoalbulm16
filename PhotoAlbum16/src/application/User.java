@@ -122,7 +122,7 @@ public class User implements Serializable{
 	        out.close();
 	        fileOut.close();
 	    } catch(Exception e) {
-	    	e.printStackTrace();
+	    	//e.printStackTrace();
 	    	System.out.println("Invalid serialization.");
 	    }
 		

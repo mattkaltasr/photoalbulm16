@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Album implements Serializable {
 	
 	private String name;
-	private ArrayList<Photo> photos;
+	public ArrayList<Photo> photos;
 	/**
 	 * default constructor 
 	 */

@@ -110,6 +110,7 @@ public class AlbumPhotosPageController {
 			
 			imv.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
+
    			 Stage stage;
    		     Parent root;
 				@Override
@@ -146,6 +147,9 @@ public class AlbumPhotosPageController {
 			});
 			PhotosTilePane.getChildren().addAll(tileStack);
 		}
+		
+		
+		
 	}
 	/**
 	 * forward button listner 
