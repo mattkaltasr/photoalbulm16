@@ -173,6 +173,7 @@ public class AdministrationController {
 	     Parent root;     
 	     
 	     stage=(Stage) logOutButton.getScene().getWindow();
+	     Main.currentUser.writeApp();
 	     root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
 
 	     Scene scene = new Scene(root);

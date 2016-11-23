@@ -121,6 +121,7 @@ public class AlbumPhotosPageController {
             		for(Photo p : albumphotos){
             			if(p.getImage().equals(((ImageView) event.getSource()).getImage())){
             				currentphoto = p;
+            				Main.photo=currentphoto;
             				break;
             			}
             		}
