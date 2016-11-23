@@ -8,14 +8,16 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
 import java.io.*;
 
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import application.Album;
@@ -34,6 +36,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.input.DataFormat;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -115,28 +118,63 @@ public class AlbumsPageController {
 	
 	
 	@FXML
-	public void Search_Clicked(ActionEvent event) throws IOException {
-		TextInputDialog dialog = new TextInputDialog();
-		dialog.setTitle("New Search");
-		dialog.setHeaderText("What do you want to search for?");
-		Optional<String> result = dialog.showAndWait();
+	public void Search_Clicked(ActionEvent event) throws IOException, ParseException {
+		TextInputDialog keydialog = new TextInputDialog();
+		keydialog.setTitle("New Search");
+		keydialog.setHeaderText("What do you want to search for? (key)");
+		Optional<String> keyresult = keydialog.showAndWait();
 
-		String searchquery = null;
-		if(result.isPresent()){
-			searchquery = result.get();
+		String key = null;
+		if(keyresult.isPresent()){
+			key = keyresult.get();
 		}
 		
-		if(searchquery != null){
+		TextInputDialog valuedialog = new TextInputDialog();
+		valuedialog.setTitle("New Search");
+		valuedialog.setHeaderText("What do you want to search for? (value)");
+		Optional<String> valueresult = valuedialog.showAndWait();
+
+		String value = null;
+		if(valueresult.isPresent()){
+			value = valueresult.get();
+		}
+		
+		TextInputDialog startdatedialog = new TextInputDialog();
+		startdatedialog.setTitle("New Search");
+		startdatedialog.setHeaderText("Starting from when? (MM/dd/yyyy)");
+		Optional<String> startdateresult = startdatedialog.showAndWait();
+
+		String startdate = null;
+		if(startdateresult.isPresent()){
+			startdate = startdateresult.get();
+		}
+		
+		TextInputDialog enddatedialog = new TextInputDialog();
+		enddatedialog.setTitle("New Search");
+		enddatedialog.setHeaderText("Until when? (MM/dd/yyyy)");
+		Optional<String> enddateresult = enddatedialog.showAndWait();
+
+		String enddate = null;
+		if(enddateresult.isPresent()){
+			enddate = enddateresult.get();
+		}
+		
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date start_date = simpleDateFormat.parse(startdate);
+        Date end_date = simpleDateFormat.parse(enddate);
+		
+
+		if(key != null && value != null && start_date != null && end_date != null){
+				
 			Main.searchReturn = new ArrayList<Photo>();
-//need dialog for these terms
-			LocalDate startDate = dialog.getStartDate();
-			LocalDate endDate = dialog.getEndDate();
-			String key = dialog.getKey().trim().toLowerCase();
-			String value = dialog.getValue().trim().toLowerCase();
+			LocalDate startDate = turntoLocal(start_date);
+			LocalDate endDate = turntoLocal(end_date);
+			key = key.trim().toLowerCase();
+			value = value.trim().toLowerCase();
 			if (startDate == null && endDate == null && key.length() == 0 && value.length() == 0) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("ERROR");
-				alert.setHeaderText("Something went wrong we couldn't find any photos related to " + searchquery);
+				alert.setHeaderText("Something went wrong we couldn't find any photos related to your input.");
 				alert.showAndWait();
 				return;
 			}
@@ -508,6 +546,12 @@ public class AlbumsPageController {
 		Main.currentUser.writeApp();
 	    folder.delete();
 	}
+	
+	public static LocalDate turntoLocal(Date date) {
+	    Instant instant = Instant.ofEpochMilli(date.getTime());
+	    return LocalDateTime.ofInstant(instant, ZoneId.systemDefault())
+	        .toLocalDate();
+	  }
 
 	@FXML
 	public void DeleteAlbum_Clicked(ActionEvent event) {
