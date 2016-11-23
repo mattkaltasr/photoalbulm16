@@ -220,7 +220,7 @@ public class PhotoController {
 			// ADD THE TAG TO THE PHOTO P
 			// UPDATE THE FILE/SERIALIZED OBJECT TOO
 			//AlbumPhotosPageController.currentphoto=Main.photo;
-			Main.regular_user.writeApp();
+			//Main.regular_user.writeApp();
 			initialize();
 		}
 		else{
